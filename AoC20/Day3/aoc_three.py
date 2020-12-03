@@ -27,7 +27,7 @@ def get_next_column(last, step=3):
         return step - 1
     elif last + step > MAX_COL_INDEX:
         new_col = MAX_COL_INDEX - last
-        # last = 0
+        last = 0
         return new_col
     else:
         return last + step
@@ -37,12 +37,21 @@ number_of_open_visited = 0
 number_of_trees_visited = 0
 # Count trees following path right 3 - down 1
 if __name__ == "__main__":
+    # Read input
+    f = open("day3.txt", "r")
+    sled_map = f.read().split('\n')
+
+    #  For test input:
+    # sled_map = dummy_map
+    MAX_COL_INDEX = len(sled_map[0]) - 1
+
     start_row = 0  # Increase by one every run
     start_col = 0  # Increase by three every run
-    print(dummy_map[start_row])
+    print(sled_map[start_row])
+    print(MAX_COL_INDEX)
     # For every step :
     col = 0
-    for i, row in enumerate(dummy_map):
+    for row in sled_map:
         # print(row)
         # Go to correct column
         what_have_we_here = row[col]
@@ -56,3 +65,6 @@ if __name__ == "__main__":
         # print(row[:col] + 'X' + row[col+1:])
 
     print("Number of trees visited: {}".format(number_of_trees_visited))
+    print("Number of open visited: {}".format(number_of_open_visited))
+    print("Sums to: {0}, which should equal {1}".format(number_of_open_visited+number_of_trees_visited, len(sled_map)))
+    # ANS 105 is too low
