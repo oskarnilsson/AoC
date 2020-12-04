@@ -20,15 +20,16 @@ dummy_map = [
 MAX_COL_INDEX = len(dummy_map[0]) - 1
 
 
-# [...8] + 3 -> 9, 10(MAX),0 <- ANS
+# [...8] + 3 -> 9, 10(MAX),0
+# 10 - 8 = 2
+
+# 9 + 3 -> 10(MAX), 0, 1
 def get_next_column(last, step=3):
     # If last + step will
     if last == MAX_COL_INDEX:
         return step - 1
     elif last + step > MAX_COL_INDEX:
-        new_col = MAX_COL_INDEX - last
-        last = 0
-        return new_col
+        return (last + step) - MAX_COL_INDEX-1
     else:
         return last + step
 
@@ -45,9 +46,7 @@ if __name__ == "__main__":
     # sled_map = dummy_map
     MAX_COL_INDEX = len(sled_map[0]) - 1
 
-    start_row = 0  # Increase by one every run
-    start_col = 0  # Increase by three every run
-    print(sled_map[start_row])
+    print(sled_map[0])
     print(MAX_COL_INDEX)
     # For every step :
     col = 0
@@ -62,9 +61,7 @@ if __name__ == "__main__":
             number_of_open_visited += 1
         else:
             print("SOMETHING IS WRONG HERE!")
-        # print(row[:col] + 'X' + row[col+1:])
 
     print("Number of trees visited: {}".format(number_of_trees_visited))
     print("Number of open visited: {}".format(number_of_open_visited))
-    print("Sums to: {0}, which should equal {1}".format(number_of_open_visited+number_of_trees_visited, len(sled_map)))
     # ANS 105 is too low
