@@ -1,3 +1,4 @@
+import numpy as np
 # Binary toggling bits
 # For rows: 'F' - "de"-set bit (i.e make it zero)
 #           'B' - set bit (i.e make it one)
@@ -11,7 +12,7 @@
 # row 102, col 4, ID 820
 
 # Part one: Find the highest seat ID
-# BBFFBBF RLL
+# Part two: Find a missing seat ID
 
 def map_string_to_bin(str):
     binary_str = '0b'
@@ -37,5 +38,12 @@ if __name__ == "__main__":
         seat_id.append(8*row + col)
     print(seat_id)
     print(max(seat_id))
+    # Sort the seat ID's
+    sorted = np.sort(seat_id)
+    last = sorted[0]
+    for id in sorted:
+        if id - last > 1:
+            print(id - 1)
+        last = id
 
 
