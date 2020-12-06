@@ -45,5 +45,3 @@ if __name__ == "__main__":
         if id - last > 1:
             print(id - 1)
         last = id
-
-
