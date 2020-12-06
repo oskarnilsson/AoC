@@ -30,10 +30,7 @@ if __name__ == "__main__":
     print("Parse done")
     count_yes = 0
     for sheet in group_ans:
+        count_yes += len(sheet)
 
-        for key in sheet:
-            if sheet[key] == 0:
-                continue
-            count_yes += sheet[key]
     print(count_yes)
     print("Number of groups: {}".format(len(group_ans)))
